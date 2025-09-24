@@ -1,13 +1,19 @@
-# scripts/enroll_multi_avg.py
-import cv2, numpy as np, glob
+import cv2, numpy as np, glob, sys
 from pathlib import Path
 from insightface.app import FaceAnalysis
 
-IN_GLOB = "reference_faces/patient_001/*.jpg"
-OUT_NPY = "reference_faces/patient_001_m_arcface.npy"
+# Read the patient_id from the command-line arguments
+if len(sys.argv) < 2:
+    raise RuntimeError("Patient ID not provided as a command-line argument.")
 
-app = FaceAnalysis(name="buffalo_l")      # RetinaFace + ArcFace
-app.prepare(ctx_id=-1, det_size=(640, 640))  # CPU mode for Cloud Run
+patient_id = sys.argv[1]
+
+# Make the paths dynamic using the patient_id
+IN_GLOB = f"reference_faces/{patient_id}/*.jpg"
+OUT_NPY = f"reference_faces/{patient_id}_m_arcface.npy"
+
+app = FaceAnalysis(name="buffalo_l")
+app.prepare(ctx_id=-1, det_size=(640, 640))
 
 embs = []
 for path in glob.glob(IN_GLOB):

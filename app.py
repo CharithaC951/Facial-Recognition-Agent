@@ -9,7 +9,7 @@ from flask_cors import CORS
 # ------------ Config via env ------------
 SUPABASE_URL = os.environ["SUPABASE_URL"]
 SUPABASE_KEY = os.environ["SUPABASE_SERVICE_ROLE_KEY"]  # server-side key only
-STORAGE_BUCKET = os.environ.get("STORAGE_BUCKET", "reference-assets")
+STORAGE_BUCKET = os.environ.get("STORAGE_BUCKET", "reference_faces")
 
 # If your images live under a predictable prefix per patient, set this template:
 IMAGE_PREFIX_TEMPLATE = os.environ.get("IMAGE_PREFIX_TEMPLATE", "reference_faces/{patient_id}/")

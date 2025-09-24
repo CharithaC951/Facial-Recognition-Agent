@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify, Response
 import requests
 from supabase import create_client, Client
 
+
 # ------------ Config via env ------------
 SUPABASE_URL = os.environ["SUPABASE_URL"]
 SUPABASE_KEY = os.environ["SUPABASE_SERVICE_ROLE_KEY"]  # server-side key only
@@ -17,6 +18,7 @@ SCRIPT_PATH = os.environ.get("SCRIPT_PATH", "scripts/enroll_multi_avg.py")
 
 # ---------------------------------------
 app = Flask(__name__)
+CORS(app)
 sb: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def _list_storage_by_prefix(prefix: str) -> List[str]:

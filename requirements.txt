@@ -1,0 +1,8 @@
+flask==3.0.3
+gunicorn==22.0.0
+requests==2.32.3
+supabase==2.6.0
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+insightface==0.7.3
+onnxruntime==1.18.0

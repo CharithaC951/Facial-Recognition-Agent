@@ -3,6 +3,7 @@ from typing import List, Optional, Tuple
 from flask import Flask, request, jsonify, Response
 import requests
 from supabase import create_client, Client
+from flask_cors import CORS
 
 
 # ------------ Config via env ------------

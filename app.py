@@ -102,6 +102,8 @@ def enroll():
     if not storage_paths and not image_urls:
         prefix = IMAGE_PREFIX_TEMPLATE.format(patient_id=patient_id)
         storage_paths = _list_storage_by_prefix(prefix)
+        print(f"DEBUG: Found storage paths: {storage_paths}")
+
 
     if not storage_paths and not image_urls:
         return jsonify(error="no images found for this patient"), 404
